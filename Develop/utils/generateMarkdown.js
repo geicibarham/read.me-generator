@@ -1,69 +1,71 @@
 
 const fs = require('fs');
 const index = require('../index');
-// ge based on which license is passed in
-// If there is no license, return an empty string
-// function renderLicenseBadge(license) {}
 
-// // TODO: Create a function that returns the license link
-// // If there is no license, return an empty string
-// function renderLicenseLink(license) {}
+const generateMarkdown = answers => {
+  let badgeLicense = ""
 
-// // TODO: Create a function that returns the license section of README
-// // If there is no license, return an empty string
-// function renderLicenseSection(license) {}
+  if (answers.license == "MIT") {
+    badgeLicense = `[![license](https://img.shields.io/badge/license-${answers.license}-success)](https://opensource.org/licenses/MIT)`
 
-// TODO: Create a function to generate markdown for README
+  }else if (answers.license == "wtfpl") {
+    badgeLicense = `[![license](https://img.shields.io/badge/license-${answers.license}-blueviolet)](http://www.wtfpl.net/)`
+  }
+  else if (answers.license == "GPLv2") {
+    badgeLicense = `[![license](https://img.shields.io/badge/license-${answers.license}-500000)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)`
 
-  // return `# ${data.title}
-  const generateMarkdown = answers => {
-    // console.log(answers);
-    return
-        `# ${answers.title}
+   } 
+  
+
+
+    return ` 
+# ${answers.title} 
+
+## Licensing
+
+${badgeLicense}
+
+
+## ${answers.description}
     
-        ##${answers.description}
+## Table Of Contents
+
+1. [Instalation](#instalation)
+2. [Usage](#usage)
+3. [Contributing](#contributing)
+4. [Tests](#tests)
+5. [Questions](#questions)
+6. [License](#license)
     
-        ## Table Of Contents
+## Instalation
     
-        *[Instalation]
-        *[Usage]
-        *[Contributing]
-        *[Tests]
-        *[Questions]
-        *[License]
+${answers.instalation}
     
-        ##Instalation
+## Usage
     
-        ${answers.instalation}
+${answers.usage}
     
-        ##Usage
+## Contribute
     
-        ${answers.usage}
+${answers.contribute}
     
-        ##Contribute
+## Tests
     
-        ${answers.contribute}
-    
-        ##Tests
-    
-        ${answers.tests}
-    
-    
-        ##Questions 
-    
-        My GitHub username is ${answers.username}, you can view my profile [here](https://github.com/${answers.github}/).
-        If you have any questions and would like to get in touch my email adress is ${answers.email}
-    
-    
-        ## License
+${answers.tests}
     
     
+## Questions 
+    
+My GitHub username is ${answers.github}, you can view my profile [here](https://github.com/${answers.github}/).
+If you have any questions and would like to get in touch my email adress is ${answers.email}
+    
+    
+  
         
-        `
-        
-    }
-    const readmeContent = generateMarkdown;
+`
+
+  }
 
 
-module.exports = generateMarkdown;
-module.exports = readmeContent;
+
+  module.exports = generateMarkdown;

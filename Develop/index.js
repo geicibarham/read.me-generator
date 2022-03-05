@@ -1,7 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
-const readmeContent = require('./utils/generateMarkdown');
 
 
 
@@ -23,7 +22,7 @@ inquirer
         {
             type: 'input',
             name: 'instalation',
-            message: 'can the user install your program?',
+            message: 'How can the user install your program?',
 
         },
 
@@ -53,7 +52,7 @@ inquirer
             type: 'list',
             name: 'license',
             message: 'What kind of license would you like to use ?',
-            choices: ["MIT", "GPL"],
+            choices: ["MIT", "wtfpl", "GPLv2",],
         },
 
     
@@ -67,21 +66,22 @@ inquirer
         {
             type: 'input',
             name: 'email',
-            message: 'Please enter your email adress ',
+            message: 'Please enter your email adress '},
+        ])
 
-        },
-    
-    ]).then((answers) => {
-        console.log(answers);
+        .then((answers) => {
+          
+    var readmeContent = generateMarkdown(answers);
+   
 
-        fs.writeFile("READ.md" , readmeContent,
-         err => {
-            if(err) {
-                console.log(err);
-                
+            fs.writeFile("READ.md" , readmeContent,
+             err => {
+                if(err) {
+                    console.log(err);
+                    
+                }
+                console.log('Your read me was generated');
             }
-            console.log('Your read me was generated');
-        }
-        )})
+            )})
     
-    
+
