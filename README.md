@@ -14,7 +14,7 @@ https://drive.google.com/file/d/1dxaK8rYMnYfQ5cKrQxMwFMOY2GPwEeHh/view
 
 Read.me generated with this app
 
-![alt-text](https://github.com/geicibarham/read.me-generator/blob/main/Develop/READ.md)
+![alt-text](https://github.com/geicibarham/read.me-generator/blob/main/Develop/Screenshot%20(61).png)
 
 Credits
 This application relies on Inquirer.js
